@@ -16,14 +16,35 @@ Prepare the histopathological images to measure the inter-observer agreements. I
 
 ### 2) Annotations
 Use a platform such as Roboflow (https://roboflow.com), LabelMe (http://labelme.csail.mit.edu/Release3.0), LabelBox (https://labelbox.com) or use another commercial software to obtain the annotations of observers. Besides, you can run your AI methods on the input images to get AI based annotations. 
-* Regional Annotations: Create binary mask images to remark the annotated stromal regions for each input image and each observer. Mask images must be the same size as input images. 
+* Regional Annotations: Create binary mask images to remark the annotated stromal regions for each input image and each observer. Mask images must be the same size as input images. Sample mask images are given in sample_data folder.
 <img src="images/sample_image_mask.png" width="500">
 
-* Cell Annotations: 
+* Cell Annotations: Cells are marked with boundary boxes by observers. Cell boundary boxes are stored as ASAP xml file format (https://github.com/computationalpathologygroup/ASAP). Sample cell coordonate xml files are given in sample_data folder.
+<img src="images/ASAP_xml.png" width="700">
 
 ### 3) Prepare data folders
-sadfsdafsadf
-
+Data folder is prepared to run the agreement measures. Structure of the folder should has the following format:
+```
+DATA_DIRECTORY/
+├── image1/
+    ├── observer1/
+      ├── mask.png
+      ├── lymphocyte.xml  
+    ├── observer2/
+      ├── mask.png
+      ├── lymphocyte.xml  
+    └── ...
+├── image2/
+    ├── observer1/
+      ├── mask.png
+      ├── lymphocyte.xml  
+    ├── observer2/
+      ├── mask.png
+      ├── lymphocyte.xml  
+    └── ...
+└── ...
+```
+A sample folder is given in sample_data folder.
 ### 4) Run measurements
 sadfsdafsadf
 
@@ -31,6 +52,4 @@ sadfsdafsadf
 sadfsdafsadf
 
 
-```
-asdasdasd
-```
+
