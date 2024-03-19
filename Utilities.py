@@ -9,6 +9,10 @@ from PIL import Image
 import xml.etree.ElementTree as ET
 import math
 
+# Constants
+STROMA_PIX_VALUE = 2
+CELL_RADIUS = 12
+
 def euclidean_distance(x1, y1, x2, y2):
     return math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
 
