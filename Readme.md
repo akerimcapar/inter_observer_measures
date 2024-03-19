@@ -46,10 +46,15 @@ DATA_DIRECTORY/
 ```
 A sample folder is given in sample_data folder.
 ### 4) Run measurements
-sadfsdafsadf
+Run the codes to calculate inter-observer agreement measurements for the sample data folder.
+* BWFK: Run the code given in BWFK.py to calculate stromal inter-observer agreement values.
+* DBCAA: Run the code given in DBCAA.py to calculate lymphocyte detection inter-observer agreement values.
+* TILS ICC: Run the code given in TILs_ICC.py.py to calculate the TILs scores and ICC inter-observer agreement values.
 
 ### 5) Interpret results
-sadfsdafsadf
+The results obtained by following this guide can be used for different purposes.
+* AI methods can be validated using the guide. Results of an AI method can be processed as an observer and can be compared with the results of phycisian observers to validate the performance of the method
+* The guide can be employed  for pathologist trainings to improve the inter-observer concordance on TILs scoring. Stromal segmentation, lymphocyte detection and overall TILs scoring based agreements can be obtained and can be examined statistically to find the source of the TILs scoring based inter-observer variabilities.
 
 
 
