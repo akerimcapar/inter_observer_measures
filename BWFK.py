@@ -82,7 +82,7 @@ def RunBWFK(image_paths, resizeW, resizeH, DL):
         image_data = np.array(image2)  
         image_data[image_data == 0] = 0 
         image_data[image_data == 1] = 0 
-        image_data[image_data == 2] = 1 #stroma
+        image_data[image_data == Utilities.STROMA_PIX_VALUE] = 1 #stroma
         
         boundary_data = create_boundary_image(image_data)
 
@@ -108,8 +108,7 @@ def RunBWFK(image_paths, resizeW, resizeH, DL):
     
     return boundary_weighted_fleiss_kappa
 
-
-
+        
 
 experiment_dir = r"c:\Users\DELL\anaconda\inter_observer\github\sample_data\experiment1"
 xml_file_name = "lymphocyte.xml"
@@ -119,8 +118,13 @@ observer_list = ["observer1", "observer2", "observer3", "observer4" ]
 files_mask = Utilities.ReadFilePathsFromExperimentFolder(experiment_dir, mask_file_name, observer_list)
 print(files_mask)
 
-boundary_weighted_fleiss_kappa = RunBWFK(files_mask[0][1], 300, 300, 5)
-print(boundary_weighted_fleiss_kappa)
+BWFK_results = []
+for index, image_masks in enumerate(files_mask):
+    boundary_weighted_fleiss_kappa = RunBWFK(image_masks[1], 300, 300, 5)
+    BWFK_results.append(boundary_weighted_fleiss_kappa)
+    print(boundary_weighted_fleiss_kappa)
 
+mean_BWFK = np.mean(BWFK_results)
+print(mean_BWFK)
 
 
