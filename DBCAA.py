@@ -66,14 +66,20 @@ xml_file_name = "lymphocyte.xml"
 mask_file_name = "mask.png"
 observer_list = ["observer1", "observer2", "observer3", "observer4" ]
 
-files_xml = Utilities.ReadFilePathsFromExperimentFolder(experiment_dir, xml_file_name, observer_list)
-files_mask = Utilities.ReadFilePathsFromExperimentFolder(experiment_dir, mask_file_name, observer_list)
-print(files_xml)
+experiments_coor = Utilities.ReadFilePathsFromExperimentFolder(experiment_dir, xml_file_name, observer_list)
+experiments_mask = Utilities.ReadFilePathsFromExperimentFolder(experiment_dir, mask_file_name, observer_list)
+print(experiments_coor)
 
-centers_all = ReadAllCenters(files_xml[0][1], files_mask[0][1], 2)
-distance_based_cell_agreement = RunDBCAA(centers_all, 20);
+DBCAA_results = []
+for index, (image_coors, image_masks) in enumerate(zip(experiments_coor, experiments_mask)):
+    centers_all = ReadAllCenters(image_coors[1], image_masks[1], Utilities.STROMA_PIX_VALUE)
+    distance_based_cell_agreement = RunDBCAA(centers_all, 20);
+    DBCAA_results.append(distance_based_cell_agreement)
+    print(distance_based_cell_agreement)
+    
 
-print(distance_based_cell_agreement)
+DBCAA_results = np.mean(DBCAA_results)
+print(DBCAA_results)
 
 
 
